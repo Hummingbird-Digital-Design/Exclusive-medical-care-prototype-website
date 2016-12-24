@@ -3,7 +3,6 @@ var services = require("./mock/services.json");
 
 var PORT = process.env.PORT || 3000;
 
-
 var app = express();
 
 app.use(express.static(__dirname + "/public"));
@@ -30,5 +29,5 @@ app.get("/services/:title?", function(req, res){
 });
 
 app.listen(PORT, function(){
-	console.log("front end server is running on port 3000");
+	console.log("front end server is running on " + PORT);
 });
