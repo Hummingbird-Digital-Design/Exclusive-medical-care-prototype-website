@@ -1,7 +1,7 @@
 var express = require("express");
 var services = require("./mock/services.json");
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || '0.0.0.0';
 
 var app = express();
 
