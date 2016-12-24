@@ -1,14 +1,18 @@
 var express = require("express");
 var services = require("./mock/services.json");
 
+var PORT = process.env.PORT || 3000;
+
 
 var app = express();
+
+app.use(express.static(__dirname + "/public"));
 
 app.set("view engine", "jade");
 app.set("views", __dirname + "/views");
 
 app.get("/", function(req, res){
-	res.render("index.jade");
+	res.send("/public/index.html");
 
 });
 
@@ -20,11 +24,11 @@ app.get("/services/:title?", function(req, res){
 		res.send("This page is under construction");
 	} else{
 		var service = services[title];
-		res.send(service);
+		res.render("service", {service: service});
 	}
 
 });
 
-app.listen(3000, function(){
+app.listen(PORT, function(){
 	console.log("front end server is running on port 3000");
 });
